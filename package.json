@@ -1,0 +1,25 @@
+{
+  "name": "practica1",
+  "version": "1.0.0",
+  "description": "practica1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachodm/Practica1-2019.git"
+  },
+  "author": "Ignacio Domingo Martín, Alberto Fernández-Baíllo Rodríguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nachodm/Practica1-2019/issues"
+  },
+  "homepage": "https://github.com/nachodm/Practica1-2019#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
