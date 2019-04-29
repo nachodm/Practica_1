@@ -1,0 +1,33 @@
+/*Contiene el estilo común para todas las vistas del proyecto*/
+
+@import url('https://fonts.googleapis.com/css?family=Niramit');
+
+html, body {
+    top: 0;
+    margin: 0;
+    height: 100%;
+    font-family: 'Niramit', sans-serif;
+    background-color: #084270;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+#logo {
+    margin: 10px;
+    max-width:30%;
+    height: auto;
+}
+
+.navbar {
+    width: 100%;
+    background-color: whitesmoke;
+    overflow: auto;
+}

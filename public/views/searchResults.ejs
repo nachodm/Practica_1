@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    	<title>Resultados de búsqueda - Facebluff</title>
+        <meta name="description" content="Facebluff">
+        <meta charset ="utf-8"/>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link type="text/css" rel="stylesheet" href="css/searchResults.css">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <header>
+            <img id="logo" src="img/logo.png" alt="Logo Facebluff"> 
+            <div class="navbar">           
+                <a href="/profile">Perfil</a>        
+                <a  class="active" href="/friends">Amigos</a>        
+                <a href="/questions">Preguntas</a>        
+                <a href="/logout">Desconectar</a>
+                <a> <%= user.points%> puntos</a>
+            </div>
+        </header>
+        <div id="content">
+            <h2 id="title">Resultados de búsqueda</h2>
+            <table>
+                <% if (searchResults.length === 0) { %>
+                    <tr>
+                        <td colspan="3">
+                            <a class="friendsView"> Lo sentimos, el usuario buscado no existe. </a> 
+                        </td>
+                    </tr>
+                <% } else { %>
+                    <% searchResults.forEach(user => { %>
+                        <tr>
+                            <td colspan="3">
+                                <% if (user.picture) { %>
+                                    <img class="icon_miniature" src="img/<%=user.picture%>" alt="profile picture"/>
+                                <% } else { %>
+                                    <img class="icon_miniature" src="img/cara.png" alt="profile picture"/>
+                                <% } %>
+                                <a class="friendsView" href="/friendProfile?id=<%= user.email %>"> <%= user.name %> </a> 
+                            </td>
+                            <td>
+                                <form id="sendFriendRequest" method="POST" action="/sendFriendRequest">
+                                    <input type ="hidden" name= "friendrequest" value="<%=user.email%>" >
+                                    <input class="profile_button" type="submit" value="Enviar solicitud de amistad">
+                                </form>
+                            </td>
+                        <tr>
+                    <% }); %>
+                <% } %>
+            </table>
+
+            <a class="back" href="/friends">Volver</a>
+        </div>
+    </body>
+</html>

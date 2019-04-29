@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Facebluff">
+        <title>Perfil - Facepluff</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link href="css/profile.css" rel ="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body>
+        <header>
+            <img id="logo" src="img/logo.png" alt="Logo Facebluff"> 
+            <div class="navbar">           
+                <a class="active" href="/profile">Perfil</a>        
+                <a href="/friends">Amigos</a>        
+                <a href="/questions">Preguntas</a>        
+                <a href="/logout">Desconectar</a>
+                <a> <%= user.points%> puntos</a>
+            </div>
+        </header>
+            <div id="content">
+                    <% if(!friend) {%>
+                        <h1>Tu perfil</h1>
+                        <table id="displayProfile">
+                            <tr>
+                                <td rowspan="4" colspan="4">    
+                                    <% if (user.profile_picture) { %>
+                                        <img class="icon" src="img/<%=user.profile_picture%>" alt="profile picture"/></td>
+                                    <% } else { %>
+                                        <img class="icon" src="img/cara.png" alt="profile picture"/></td>
+                                    <% } %> 
+                                <td class="data"><%= user.name %></td>
+                            </tr>
+                            <% if (user.birthdate >= 0) { %>
+                                <tr>
+                                    <td class="data"><%= user.birthdate %> años</td>
+                                </tr>
+                            <% } %>
+                            <tr>
+                                <% if (user.gender === 'm') { %>
+                                    <td class="data">Hombre</td>
+                                <% } else if (user.gender === 'f') { %>
+                                    <td class="data">Mujer</td>
+                                <% } else { %>
+                                <td class="data">Otro</td>
+                                <% } %>
+                            </tr>
+                            <tr>
+                                <td class="data"><%= user.points %> puntos</td>
+                            </tr>
+                        </table>
+    
+                        <a class="profile_button" href="/modify">Modificar Usuario</a>
+                    <%} else { %>
+                        <h1>Perfil de <%=friend.name%></h1>
+                        <table id="displayProfile">
+                            <tr>
+                                <td rowspan="4" colspan="4">    
+                                    <% if (friend.profile_picture) { %>
+                                        <img class="icon" src="img/<%=friend.profile_picture%>" alt="profile picture"/></td>
+                                    <% } else { %>
+                                        <img class="icon" src="img/cara.png" alt="profile picture"/></td>
+                                    <% } %> 
+                                <td class="data"><%= friend.name %></td>
+                            </tr>
+                            <% if (friend.birthdate >= 0) { %>
+                                <tr>
+                                    <td class="data"><%= friend.birthdate %> años</td>
+                                </tr>
+                            <% } %>
+                            <tr>
+                                <% if (friend.gender === 'm') { %>
+                                    <td class="data">Hombre</td>
+                                <% } else if (friend.gender === 'f') { %>
+                                    <td class="data">Mujer</td>
+                                <% } else { %>
+                                <td class="data">Otro</td>
+                                <% } %>
+                            </tr>
+                            <tr>
+                                <td class="data"><%= friend.points %> puntos</td>
+                            </tr>
+                        </table>
+
+                        <a class="profile_button" href="/friends">Volver</a>
+                    <% } %>
+            </div>
+    </body>
+</html>

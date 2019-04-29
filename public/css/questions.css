@@ -1,0 +1,121 @@
+/* Navigation links */
+.navbar a {
+    float: left;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    width: 20%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center; /* If you want the text to be centered */
+    transition: 0.3s;
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+    background-color: #084270;
+    opacity: 0.95;
+}
+  
+/* Style the current/active link */
+.navbar a.active {
+    color: whitesmoke;
+    background-color: #084270;
+}
+  
+/* Add responsiveness - on screens less than 500px, make the navigation links appear on top of each other, instead of next to each other */
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: left; /* If you want the text to be left-aligned on small screens */
+    }
+}
+
+#content {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.answ {
+    text-align: left;
+}
+
+.questions {
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: whitesmoke;
+    color: #084270;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s;
+    border-radius: 5px;
+    text-decoration: none;
+}
+    
+/* Add a hover effect for buttons */
+.questions:hover {
+    background-color: beige;
+    opacity: 0.8;
+}
+
+#newq {
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: whitesmoke;
+    color: #084270;
+    padding: 16px 22px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 30vw;
+    text-decoration: none;
+}
+
+/* Add a hover effect for buttons */
+#newq:hover {
+    border: solid 2px whitesmoke;
+    background-color: #084270;
+    color: whitesmoke;
+    opacity: 0.8;
+}
+
+input[type=text] {
+    text-align: left;
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    border: 1px solid #ccc;
+    background-color: #084270;
+    color: whitesmoke;
+    padding: 12px 18px;
+    margin: 4px 6px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 15%;
+}
+  
+/* Add a hover effect for buttons */
+button:hover {
+    border: solid 1px #084270;
+    background-color: whitesmoke;
+    color: #084270;
+    opacity: 0.8;
+}

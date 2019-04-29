@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    	<title>Amigos - Facebluff</title>
+        <meta name="description" content="Facebluff">
+        <meta charset ="utf-8"/>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link type="text/css" rel="stylesheet" href="css/friends.css">
+        <link type="text/css" rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <header>
+            <img id="logo" src="img/logo.png" alt="Logo Facebluff"> 
+            <div class="navbar">           
+                <a href="/profile">Perfil</a>        
+                <a class="active" href="/friends">Amigos</a>        
+                <a href="/questions">Preguntas</a>        
+                <a href="/logout">Desconectar</a>
+                <a> <%= user.points%> puntos</a>
+            </div>
+        </header>
+        <div id="content">
+            <h2 id="title">Solicitudes de amistad</h2>
+            <table>
+                
+                    <% if (requests.length === 0) { %>
+                        <tr>
+                            <td colspan="4">
+                                    <a class="friendsView"> No tienes solicitudes de amistad pendientes. </a> 
+                            </td>
+                        </tr>
+                    <% } else { %>
+                        <% requests.forEach(request => { %>
+                            <tr>
+                                <form method="POST" action="/friendRequestResponse" >
+                                    <td colspan="4">
+                                        <input type ="hidden" name= "friendrequest" value="<%=request.email%>" >
+                                        <% if (request.picture) { %>
+                                            <img class="icon_miniature" src="img/<%=request.picture%>" alt="profile picture"/>
+                                        <% } else { %>
+                                            <img class="icon_miniature" src="img/cara.png" alt="profile picture"/>
+                                        <% } %> 
+                                        <a class="friendsView" href="/friendProfile?id=<%= request.email %>"> <%= request.name %> </a> 
+                                    </td>
+                                    <td class="bord">
+                                        <input class="profile_button" type="submit" name="btn" value="Aceptar">
+                                    </td>
+                                    <td>
+                                        <input class="profile_button" type="submit" name="btn" value="Rechazar">
+                                    </td>
+                                </form>
+                            </tr>
+                        <% }); %>
+                    <% } %>
+                
+            </table>
+            <div id="search">
+                <h2 class="mytext">Búsqueda de amigos</h2>
+                <form action="/friends_Search" method="POST">
+                    <table>
+                        <tr>
+                            <td>
+                                Buscar por nombre:
+                            </td>
+                            <td>
+                                <input type="text" name="searchfriend">                     
+                        </td>
+                            <td>
+                                <button type="submit" value="Buscar">Buscar</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <h2 class="mytext">Mis amigos</h2>
+            <table>
+                    <% if (friends.length === 0) { %>
+                        <tr>
+                            <td>
+                                <a class="friendsView" href="#"> Aún no has añadido ningún amigo. </a>
+                            </td>
+                        </tr>
+                    <% } else { %>
+                        <% friends.forEach(friend => { %>
+                            <tr>
+                                <td>
+                                    <% if (friend.picture) { %>
+                                        <img class="icon_miniature" src="img/<%=friend.picture%>" alt="profile picture"/>
+                                    <% } else { %>
+                                        <img class="icon_miniature" src="img/cara.png" alt="profile picture"/>
+                                    <% } %> 
+                                    <a class="friendsView" href="/friendProfile?id=<%= friend.email %>"> <%= friend.name %> </a> 
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } %>
+            </table>
+        </div>
+    </body>
+</html>
